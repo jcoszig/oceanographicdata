@@ -13,7 +13,7 @@ class SearchFilter extends Component {
     this.setState({
       searchQuery: e.target.value
     })
-    this.props.onChange(event.target.value)
+    this.props.onChange(e.target.value)
   };
 
   render() {
