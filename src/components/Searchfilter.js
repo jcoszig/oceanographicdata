@@ -19,14 +19,15 @@ class SearchFilter extends Component {
   render() {
     return (
       <section className="searchbar-wrapper">  
-        <label for="searchbar" className="">Filter by:</label>
+        <label htmlFor="searchbar" className="">Filter by:</label>
         <input type="search"
           className=""  
           id="" 
           name="searchbar" 
           placeholder="" 
           value={this.state.searchQuery} 
-          autocomplete="off"/>
+          onChange={this.handleChange}
+          autoComplete="off"/>
       </section>
     );
   }
