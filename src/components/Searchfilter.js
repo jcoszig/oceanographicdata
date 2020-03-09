@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import {debounce} from "../helpers";
  
 class SearchFilter extends Component {
+  
   // Typecheck 
   static propTypes = {
     updateSearchQuery: PropTypes.func
   }
 
+  // Begin filtering once string is > 3 char 
   handleChange = debounce(searchTerm => {
-    /* Begin filtering once string is > 3 char */
+    // return searchTerm.length > 3 ? this.props.updateSearchQuery(searchTerm) : false;
     return searchTerm.length > 3 ? this.props.updateSearchQuery(searchTerm) : false;
   }, 500)
 

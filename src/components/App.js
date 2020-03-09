@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Searchfilter from "./Searchfilter";
+import Preview from "./Preview";
  
 class App extends Component {
 
   // Initialize state
   state = {
-    parsedData : {},
+    parsedData : [],
     dataProperties : {
       type : {},
       temporal : {},
@@ -48,21 +49,31 @@ class App extends Component {
     searchQuery = ui;
     this.setState({ searchQuery });
 
-    this.findMatches(searchQuery);
+    this.updateFilteredData(searchQuery.toLowerCase() );
     // console.log(ui);
   };
 
-  // Filter data by matching searchQuery
-  findMatches = searchQuery => {
-    const data = this.state.parsedData;
-    let wordToMatch = searchQuery.toLowerCase();
+  // Filter matches within title or description
+  updateFilteredData = wordToMatch => {
+    let filteredData = { ...this.state.filteredData };
 
-    return data.filter(search => {
+    filteredData = this.state.parsedData.filter( item => {
       const regex = new RegExp(wordToMatch, 'gi');
-
-      console.log( search.title.match(regex) || search.description.match(regex) );
-      return search.title.match(regex) || search.description.match(regex)
+      return item.title.match(regex) || item.description.match(regex)
     });
+    this.setState({ filteredData });
+  }
+
+  // Filter data by matching searchQuery
+  // findMatches = (wordToMatch, data) => {
+  //   return data.filter(item => {
+  //     const regex = new RegExp(wordToMatch, 'gi');
+  //     return item.title.match(regex) || item.description.match(regex)
+  //   });
+  // }
+
+  displayMatches(searchQuery){
+    // todo
   }
 
   render() {
@@ -72,6 +83,7 @@ class App extends Component {
         <Searchfilter
           updateSearchQuery={this.updateSearchQuery}
         />
+        <Preview />
       </div>
     );
   }
