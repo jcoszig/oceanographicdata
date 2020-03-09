@@ -1,30 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import {debounce} from "../helpers";
  
 class SearchFilter extends Component {
-
   // Typecheck 
   static propTypes = {
     updateSearchQuery: PropTypes.func
   }
-  // handleChange = e => {
 
-  //   // this.props.onChange(e.target.value)
-  //   const updatedSearchQuery = {
-  //     ...this.props.searchQuery,
-  //     [e.currentTarget.name]: e.currentTarget.value
-  //   };
-  //   // update state
-  //   this.props.updateSearchQuery(updatedSearchQuery);
-  // };
-
-  handleChange = e => {
-    let searchQuery = e.target.value;
-    let timeout = null;
-
+  handleChange = debounce(searchTerm => {
     /* Begin filtering once string is > 3 char */
-    return searchQuery.length > 3 ? this.props.updateSearchQuery(searchQuery) : false;
-  };
+    return searchTerm.length > 3 ? this.props.updateSearchQuery(searchTerm) : false;
+  }, 500)
 
   render() {
     return (
@@ -34,7 +21,7 @@ class SearchFilter extends Component {
           className=""  
           id="" 
           name="searchbar" 
-          onChange={this.handleChange}
+          onChange={e => {this.handleChange(e.target.value)}}
           autoComplete="off"/>
       </section>
     );
