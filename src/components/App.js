@@ -41,19 +41,22 @@ class App extends Component {
   }
 
   // Store user input from search query
-  updateSearchQuery = userInput => {
+  updateSearchQuery = ui => {
     // Take copy of current state then update
-    const searchQuery = { ...this.state.searchQuery };
-    searchQuery = userInput;
-    this.setState({ searchQuery });
+    // const searchQuery = { ...this.state.searchQuery };
+    // searchQuery = ui;
+    // this.setState({ searchQuery });
     
-    console.log(userInput);
+    console.log(ui);
   };
 
   render() {
     return (
       <div>
         App component.
+        <Searchfilter
+          updateSearchQuery={this.updateSearchQuery}
+        />
       </div>
     );
   }
