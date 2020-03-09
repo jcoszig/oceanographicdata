@@ -22,7 +22,8 @@ class App extends Component {
       title : {},
       description : {}
     },
-    searchQuery : ''
+    searchQuery : '',
+    filteredData : []
   }
 
   // Fetch JSON data and set in state.
@@ -43,12 +44,26 @@ class App extends Component {
   // Store user input from search query
   updateSearchQuery = ui => {
     // Take copy of current state then update
-    // const searchQuery = { ...this.state.searchQuery };
-    // searchQuery = ui;
-    // this.setState({ searchQuery });
-    
-    console.log(ui);
+    let searchQuery = { ...this.state.searchQuery };
+    searchQuery = ui;
+    this.setState({ searchQuery });
+
+    this.findMatches(searchQuery);
+    // console.log(ui);
   };
+
+  // Filter data by matching searchQuery
+  findMatches = searchQuery => {
+    const data = this.state.parsedData;
+    let wordToMatch = searchQuery.toLowerCase();
+
+    return data.filter(search => {
+      const regex = new RegExp(wordToMatch, 'gi');
+
+      console.log( search.title.match(regex) || search.description.match(regex) );
+      return search.title.match(regex) || search.description.match(regex)
+    });
+  }
 
   render() {
     return (

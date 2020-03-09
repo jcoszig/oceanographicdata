@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
  
 class SearchFilter extends Component {
 
+  // Typecheck 
   static propTypes = {
     updateSearchQuery: PropTypes.func
   }
@@ -18,8 +19,10 @@ class SearchFilter extends Component {
   // };
 
   handleChange = e => {
-    /* Begin filtering once string is > 3 char */
     let searchQuery = e.target.value;
+    let timeout = null;
+
+    /* Begin filtering once string is > 3 char */
     return searchQuery.length > 3 ? this.props.updateSearchQuery(searchQuery) : false;
   };
 
@@ -31,7 +34,6 @@ class SearchFilter extends Component {
           className=""  
           id="" 
           name="searchbar" 
-          // value={this.state.searchQuery} 
           onChange={this.handleChange}
           autoComplete="off"/>
       </section>
