@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import Searchfilter from "./Searchfilter";
  
 class App extends Component {
 
   // Initialize state
   state = {
+    parsedData : {},
     dataProperties : {
       type : {},
       temporal : {},
@@ -19,8 +21,34 @@ class App extends Component {
       spatial : {},
       title : {},
       description : {}
-    }
+    },
+    searchQuery : ''
   }
+
+  // Fetch JSON data and set in state.
+  componentDidMount() {
+    fetch('http://localhost:3000/data/data.json')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      this.setState({parsedData:data})
+    })
+    .catch(err => {
+      console.log('unable to fetch JSON data. Error: ', err)
+    })
+  }
+
+  // Store user input from search query
+  updateSearchQuery = userInput => {
+    // Take copy of current state then update
+    const searchQuery = { ...this.state.searchQuery };
+    searchQuery = userInput;
+    this.setState({ searchQuery });
+    
+    console.log(userInput);
+  };
 
   render() {
     return (
