@@ -1,7 +1,42 @@
-/*todo:
- typography
- variables:
-    colours
-    font sizes
-    font family
- */
+* {
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	font-family: $font;
+	font-weight: normal;
+	background: $grey;
+	color: $off-white;
+	height: 100%;
+}
+
+::selection {
+	background-color: $pink;
+	color: $white;
+	text-shadow: none;
+}
+
+#root {
+	display: grid;
+	grid-template-rows: $logo-height 1fr $footer-height;
+	min-height: 100vh;
+}
+
+ul {
+	padding: 0;
+
+	li {
+		list-style: none;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+p {
+	line-height: 1.5;
+}
