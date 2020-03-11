@@ -21,9 +21,10 @@ class App extends Component {
       accesslevel : {},
       spatial : {},
       title : {},
-      description : {}
-    },
+      description: {}
+  },
     searchQuery : '',
+    filterList : [],
     filteredData : []
   }
 
@@ -34,13 +35,13 @@ class App extends Component {
       return response.json()
     })
     .then(data => {
-      console.log(data)
       this.setState({parsedData:data})
     })
     .catch(err => {
       console.log('unable to fetch JSON data. Error: ', err)
     })
   }
+
 
   // Store user input from search query
   updateSearchQuery = ui => {
@@ -61,30 +62,46 @@ class App extends Component {
       const regex = new RegExp(wordToMatch, 'gi');
       return item.title.match(regex) || item.description.match(regex)
     });
-    this.setState({ filteredData });
+    this.setState({ filteredData }, () =>{
+      console.log(this.getFilteredData() );
+    });
+    // this.previewFilteredData();
   }
 
-  // Filter data by matching searchQuery
-  // findMatches = (wordToMatch, data) => {
-  //   return data.filter(item => {
-  //     const regex = new RegExp(wordToMatch, 'gi');
-  //     return item.title.match(regex) || item.description.match(regex)
-  //   });
-  // }
+  previewFilteredData(){
+    let result = []
+    if(this.state.filteredData.length > 0){
+      result = this.state.filteredData.map( item => {
+        return [item.title, item.description]
+      });
+    } 
+    return result;
+  }
 
-  displayMatches(searchQuery){
+  highlightMatches(searchQuery){
     // todo
+  }
+
+  /* test: getting state and passing as a prop */
+  getFilteredData(){
+    this.state.filteredData && this.state.filteredData.map(item => {
+      return item;
+    });
   }
 
   render() {
     return (
-      <div>
-        App component.
+      <>
+      <header className="main-header">
+        <div className="header-title">Oceanographic data</div>
         <Searchfilter
           updateSearchQuery={this.updateSearchQuery}
         />
-        <Preview />
-      </div>
+      </header>
+        <Preview 
+          filteredData={this.getFilteredData}
+        />
+      </>
     );
   }
 }
