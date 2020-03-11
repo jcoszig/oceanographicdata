@@ -29,19 +29,24 @@ class App extends Component {
   }
 
   // Fetch JSON data and set in state.
-  componentDidMount() {
-    fetch('http://localhost:3000/data/data.json')
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      this.setState({parsedData:data})
-    })
+  async componentDidMount() {
+    await fetch('http://localhost:3000/data/data.json')
+    .then(
+      (response) => {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+        response.json().then(
+          data => { this.setState({parsedData:data})
+        })
+      }
+    )
     .catch(err => {
       console.log('unable to fetch JSON data. Error: ', err)
-    })
+    });
   }
-
 
   // Store user input from search query
   updateSearchQuery = ui => {
@@ -68,6 +73,19 @@ class App extends Component {
     // this.previewFilteredData();
   }
 
+  // Filter matches based on filter checkbox
+  updateFilterList = (filter) => {
+    let filterList = { ...this.state.filterList };
+
+    filterList = this.state.parsedData.filter( item => {
+      const regex = new RegExp(filter, 'gi');
+      return item.title.match(regex) || item.description.match(regex)
+    });
+    this.setState({ filterList }, () =>{
+      console.log(this.getFilteredData() );
+    });
+  }
+
   previewFilteredData(){
     let result = []
     if(this.state.filteredData.length > 0){
@@ -82,13 +100,6 @@ class App extends Component {
     // todo
   }
 
-  /* test: getting state and passing as a prop */
-  getFilteredData(){
-    this.state.filteredData && this.state.filteredData.map(item => {
-      return item;
-    });
-  }
-
   render() {
     return (
       <>
@@ -99,7 +110,11 @@ class App extends Component {
         />
       </header>
         <Preview 
-          filteredData={this.getFilteredData}
+          filteredData={
+            this.state.filteredData && this.state.filteredData.map(item => {
+              return item;
+            })
+          }
         />
       </>
     );
