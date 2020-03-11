@@ -68,7 +68,7 @@ class App extends Component {
       return item.title.match(regex) || item.description.match(regex)
     });
     this.setState({ filteredData }, () =>{
-      console.log(this.getFilteredData() );
+      console.log(filteredData);
     });
     // this.previewFilteredData();
   }
@@ -101,21 +101,43 @@ class App extends Component {
   }
 
   render() {
+    this.state.filteredData && this.state.filteredData.map(item => (
+      <p>{item}</p>
+    ))
+
     return (
       <>
-      <header className="main-header">
-        <div className="header-title">Oceanographic data</div>
-        <Searchfilter
-          updateSearchQuery={this.updateSearchQuery}
-        />
-      </header>
-        <Preview 
-          filteredData={
-            this.state.filteredData && this.state.filteredData.map(item => {
-              return item;
-            })
-          }
-        />
+        <header className="main-header">
+          <div className="header-title">Oceanographic data</div>
+          <Searchfilter
+            updateSearchQuery={this.updateSearchQuery}
+          />
+        </header>
+        <main class="article-list">
+          <div class="preview-header">
+            <div class="sort-selection">
+              <p>Sort: </p><span>Date</span>
+              <div class="sort-dropdown">
+                <ul>
+                  <li><p>Date</p></li>
+                  <li><p>Alphabetically</p></li>
+                  <li><p>Relevance (optional)</p></li>
+                </ul>
+              </div>
+              <ul className="preview-results">
+                {this.state.filteredData && this.state.filteredData.map(item => (
+                  <Preview 
+                    key={item.identifier}
+                    index={item.identifier}
+                    title={item.title}
+                    description={item.description}
+                    temporal={item.temporal}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </main>
       </>
     );
   }
