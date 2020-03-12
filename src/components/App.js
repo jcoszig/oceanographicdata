@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Searchfilter from "./Searchfilter";
 import Preview from "./Preview";
+import Fullview from "./Fullview";
+import {
+  BrowserRouter,
+  Link
+} from "react-router-dom";
  
 class App extends Component {
 
@@ -101,23 +106,22 @@ class App extends Component {
   }
 
   render() {
-    this.state.filteredData && this.state.filteredData.map(item => (
-      <p>{item}</p>
-    ))
-
+    
     return (
       <>
         <header className="main-header">
-          <div className="header-title">Oceanographic data</div>
+          <Link to="/">
+            <div className="header-title">Oceanographic data</div>
+          </Link>
           <Searchfilter
             updateSearchQuery={this.updateSearchQuery}
           />
         </header>
-        <main class="article-list">
-          <div class="preview-header">
-            <div class="sort-selection">
+        <main className="article-list">
+          <div className="preview-header">
+            <div className="sort-selection">
               <p>Sort: </p><span>Date</span>
-              <div class="sort-dropdown">
+              <div className="sort-dropdown">
                 <ul>
                   <li><p>Date</p></li>
                   <li><p>Alphabetically</p></li>
