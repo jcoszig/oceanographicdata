@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Searchfilter from "./Searchfilter";
 import Preview from "./Preview";
-import Fullview from "./Fullview";
+import Article from "./Article";
 import {
   BrowserRouter,
   Link
@@ -117,7 +117,7 @@ class App extends Component {
             updateSearchQuery={this.updateSearchQuery}
           />
         </header>
-        <main className="article-list">
+        <main className="article-container">
           <div className="preview-header">
             <div className="sort-selection">
               <p>Sort: </p><span>Date</span>
@@ -129,6 +129,7 @@ class App extends Component {
                 </ul>
               </div>
               <ul className="preview-results">
+              {/* Render */}
                 {this.state.filteredData && this.state.filteredData.map(item => (
                   <Preview 
                     key={item.identifier}
@@ -141,6 +142,13 @@ class App extends Component {
               </ul>
             </div>
           </div>
+          <Article
+            key={item.identifier}
+            index={item.identifier}
+            title={item.title}
+            description={item.description}
+            temporal={item.temporal}
+          />
         </main>
       </>
     );

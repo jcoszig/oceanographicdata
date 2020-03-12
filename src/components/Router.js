@@ -5,14 +5,14 @@ import {
     Switch
   } from "react-router-dom";
 import App from "./App";
-import Fullview from "./Fullview";
+import Article from "./Article";
 import Notfound from "./Notfound";
 
 const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={App}/> 
-            <Route path="/article/:articleId" component={Fullview}/> 
+            <Route path="/article/:articleId" component={Article}/> 
             <Route component={Notfound}/> 
         </Switch>
     </BrowserRouter>
