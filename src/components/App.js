@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import Searchfilter from "./Searchfilter";
 import Preview from "./Preview";
 import Article from "./Article";
-import {
-  BrowserRouter,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
  
 class App extends Component {
 
@@ -30,7 +27,8 @@ class App extends Component {
   },
     searchQuery : '',
     filterList : [],
-    filteredData : []
+    filteredData : [],
+    article : []
   }
 
   // Fetch JSON data and set in state.
@@ -75,7 +73,6 @@ class App extends Component {
     this.setState({ filteredData }, () =>{
       console.log(filteredData);
     });
-    // this.previewFilteredData();
   }
 
   // Filter matches based on filter checkbox
@@ -86,23 +83,24 @@ class App extends Component {
       const regex = new RegExp(filter, 'gi');
       return item.title.match(regex) || item.description.match(regex)
     });
-    this.setState({ filterList }, () =>{
-      console.log(this.getFilteredData() );
-    });
+    this.setState({ filterList });
   }
 
-  previewFilteredData(){
-    let result = []
-    if(this.state.filteredData.length > 0){
-      result = this.state.filteredData.map( item => {
-        return [item.title, item.description]
-      });
-    } 
-    return result;
+  updateArticle = (articleId) => {
+    let article = { ...this.state.article };
+
+    article = this.state.parsedData.filter( item => {
+      return item.identifier === articleId;
+    });
+    this.setState({ article });
   }
 
   highlightMatches(searchQuery){
     // todo
+  }
+
+  test = () => {
+    return 'render';
   }
 
   render() {
@@ -129,7 +127,7 @@ class App extends Component {
                 </ul>
               </div>
               <ul className="preview-results">
-              {/* Render */}
+              {/* Render filtered objects */}
                 {this.state.filteredData && this.state.filteredData.map(item => (
                   <Preview 
                     key={item.identifier}
@@ -137,18 +135,32 @@ class App extends Component {
                     title={item.title}
                     description={item.description}
                     temporal={item.temporal}
+                    updateArticle={this.updateArticle}
                   />
                 ))}
               </ul>
             </div>
           </div>
-          <Article
-            key={item.identifier}
-            index={item.identifier}
-            title={item.title}
-            description={item.description}
-            temporal={item.temporal}
-          />
+          {/* Pass props to article only. No rendering at this stage. */}
+          { this.state.article && this.state.article.map(article => (
+            <Article
+              key={article.identifier}
+              index={article.identifier}
+              title={article.title}
+              description={article.description}
+              type={article.type}
+              temporal={article.temporal}
+              publisherName={article.publisher_name}
+              publisherType={article.publisher_type}
+              modified={article.modified}
+              contactpointHasemail={article.contactpoint_hasemail}
+              contactpointFn={article.contactpoint_fn}
+              contactpointType={article.contactpoint_type}
+              accrualperiodicity={article.accrualperiodicity}
+              accesslevel={article.accesslevel}
+              spatial={article.spatial}
+            />
+          ))}
         </main>
       </>
     );
