@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { formatDateRangeUK } from "../helpers";
  
 class Article extends Component {
   state = {
@@ -50,13 +52,18 @@ class Article extends Component {
 
     return (
       <>
+        <header className="main-header">
+          <Link to="/">
+            <div className="header-title">Oceanographic data</div>
+          </Link>
+        </header>
         <p key={this.articleId + '-title'}>{title}</p>
         <p key={this.articleId + '-description'}>{description}</p>
         <p key={this.articleId + '-type'}>{type}</p>
-        <p key={this.articleId + '-temporal'}>{temporal}</p>
+        <p key={this.articleId + '-temporal'}>Date: {formatDateRangeUK(temporal)}</p>
         <p key={this.articleId + '-publisher_name'}>{publisher_name}</p>
         <p key={this.articleId + '-publisher_type'}>{publisher_type}</p>
-        <p key={this.articleId + '-modified'}>{modified}</p>
+        <p key={this.articleId + '-modified'}>Modified: {modified}</p>
         <p key={this.articleId + '-contactpoint_hasemail'}>{contactpoint_hasemail}</p>
         <p key={this.articleId + '-contactpoint_fn'}>{contactpoint_fn}</p>
         <p key={this.articleId + '-contactpoint_type'}>{contactpoint_type}</p>
