@@ -83,7 +83,9 @@ class App extends Component {
   }
 
   render() {
-    
+    // highlightMatches = () => {
+
+    // }
     return (
       <>
         <header className="main-header">
