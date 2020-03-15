@@ -6,6 +6,7 @@ class Preview extends Component {
 
   highlightMatches = (str, searchQuery) => {
     const splitMatchFromStr = str.split(new RegExp(`(${searchQuery})`, 'gi'));
+    console.log(`splitMatchFromStr: ${splitMatchFromStr}`);
     return <p>{splitMatchFromStr.map(splitStr => 
       splitStr.toLowerCase() === searchQuery.toLowerCase() ? <span className="highlight">{splitStr}</span> : splitStr)}</p>;
   }

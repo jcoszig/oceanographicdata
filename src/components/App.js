@@ -82,10 +82,16 @@ class App extends Component {
     this.setState({ filterList });
   }
 
-  render() {
-    // highlightMatches = () => {
+  numberResults = () => {
+    if(this.state.filteredData.length > 0){
+      return (
+        `${this.state.filteredData.length} results for "${this.state.searchQuery}"`
+      );
+    }
+  }
 
-    // }
+  render() {
+
     return (
       <>
         <header className="main-header">
@@ -99,6 +105,9 @@ class App extends Component {
           />
         </header>
         <main className="article-container">
+          <div className="number-results">
+            {this.numberResults()}
+          </div>
           <div className="preview-header">
             <div className="sort-selection">
               <p>Sort: </p><span>Date</span>
