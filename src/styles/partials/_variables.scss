@@ -9,9 +9,36 @@ $red: #ba0c2f;
 $font: 'HKGrotesk', sans-serif;
 
 // Dimensions
+$site-absolute-max-width: 2000px;
+$site-max-width: 1170px;
+
 $header-height: 110px;
 $footer-height: 80px;
 $side-padding: 2rem;
 
 // Paths
 $fonts: '../../assets/fonts/';
+
+// Standard media queries (mobile first)
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+// from tablet and wider
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+//from desktop and wider
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+/* 
+Example usage:
+@include tablet { ... }
+@include desktop { ... }
+*/

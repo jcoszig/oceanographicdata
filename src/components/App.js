@@ -97,7 +97,7 @@ class App extends Component {
         <header className="main-header">
           <Link to="/">
             <div className="header-title">
-              <h1>Oceanographic data</h1>
+              <h1>Oceanographic Data</h1>
             </div>
           </Link>
           <Searchfilter

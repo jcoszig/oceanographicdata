@@ -4,9 +4,10 @@
 	-webkit-font-smoothing: antialiased;
 }
 
+html { font-size: 10px; }
+
 body {
     font-family: $font;
-    font-size: 10px;
 	font-weight: normal;
 	background: $lightgrey;
 	color: $black;
@@ -34,4 +35,20 @@ a {
 
 p {
 	line-height: 1.5;
+}
+
+p, span, div { font-size: 1.6rem; }
+
+h1 { 
+	font-size: 2.2rem;
+	@include tablet { font-size: 2rem; }
+}
+
+.main-header { 
+	width: 100%;
+	.header-title {
+		background: $red;
+		padding: 1rem;
+		h1 { color: $off-white; }
+	}
 }
