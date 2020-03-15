@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { formatDateRangeUK } from "../helpers";
+import { formatDateRangeUK, setAccessLevelIcon } from "../helpers";
  
 class Article extends Component {
   state = {
@@ -52,12 +52,12 @@ class Article extends Component {
 
     return (
       <>
-        <header className="main-header">
-          <Link to="/">
-            <div className="header-title">Oceanographic data</div>
-          </Link>
-        </header>
-        <p key={this.articleId + '-title'}>{title}</p>
+        <div className="access-level-icon">
+          <i className={'fas ' + setAccessLevelIcon(accesslevel)}></i>
+        </div>
+        <div key={this.articleId + '-title'}>{title}</div>
+        <p key={this.articleId + '-accesslevel'}>{accesslevel}</p>
+
         <p key={this.articleId + '-description'}>{description}</p>
         <p key={this.articleId + '-type'}>{type}</p>
         <p key={this.articleId + '-temporal'}>Date: {formatDateRangeUK(temporal)}</p>
@@ -68,7 +68,6 @@ class Article extends Component {
         <p key={this.articleId + '-contactpoint_fn'}>{contactpoint_fn}</p>
         <p key={this.articleId + '-contactpoint_type'}>{contactpoint_type}</p>
         <p key={this.articleId + '-accrualperiodicity'}>{accrualperiodicity}</p>
-        <p key={this.articleId + '-accesslevel'}>{accesslevel}</p>
         {/* <p>{spatial}</p>  */}
       </>
     )
@@ -80,8 +79,14 @@ class Article extends Component {
 
     return (
       <>
-        <h2>Article page</h2>
-        <div>{this.renderArticle()}</div>
+        <header className="main-header">
+          <Link to="/">
+            <div className="header-title">
+              <h1>Oceanographic data</h1>
+            </div>
+          </Link>
+        </header>
+        <main className="article-container">{this.renderArticle()}</main>
       </>
     )
   }

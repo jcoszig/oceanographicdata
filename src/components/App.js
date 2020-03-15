@@ -94,7 +94,9 @@ class App extends Component {
       <>
         <header className="main-header">
           <Link to="/">
-            <div className="header-title">Oceanographic data</div>
+            <div className="header-title">
+              <h1>Oceanographic data</h1>
+            </div>
           </Link>
           <Searchfilter
             updateSearchQuery={this.updateSearchQuery}
@@ -120,6 +122,7 @@ class App extends Component {
                     title={item.title}
                     description={item.description}
                     temporal={item.temporal}
+                    accessLevel={item.accesslevel}
                   />
                 ))}
               </ul>
