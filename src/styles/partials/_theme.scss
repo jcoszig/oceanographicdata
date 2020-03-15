@@ -42,9 +42,30 @@ h1 {
 
 .main-header { 
 	width: 100%;
+	max-height: 11rem;
 	.header-title {
 		background: $red;
 		padding: 1rem;
-		h1 { color: $off-white; }
+		h1 { 
+			width: 50%;
+			color: $off-white;
+		}
+	}
+	.search-dropdown-mobile-open {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 5rem;
+		width: 7rem;
+		padding: 0.5rem;
+		background: $red;
+		border: none;
+		cursor:pointer;
+		p {
+			font-size: 1.6rem;
+			color: $off-white;
+			border: solid 2px white;
+		}
+		@include tablet { display: none; }
 	}
 }

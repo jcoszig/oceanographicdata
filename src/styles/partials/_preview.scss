@@ -1,0 +1,34 @@
+main.article-container {
+    width: 100%;
+    height:100%;
+    padding: 1rem;
+    margin:2rem;
+    background: $off-white;
+    @include desktop {
+        padding: 2rem;
+    }
+    .number-results, .preview-header {
+        padding-bottom: 2rem;
+    }
+    .number-results {
+        font-size: 2rem;
+    }
+    .preview-header {
+        width: 90%;
+        .preview-results {
+            display: inline-block;
+            li {
+                padding-bottom: 2rem;
+                a {
+                    display: inline-block;
+                    border: solid 2px $grey;
+                    padding: 0.5rem;
+                    .preview-view-full {
+    
+                    }
+                }
+            }
+        }
+    }
+}
+

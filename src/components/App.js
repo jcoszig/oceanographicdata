@@ -96,15 +96,17 @@ class App extends Component {
     return (
       <>
         <header className="main-header">
-          <Link to="/">
-            <div className="header-title">
+          <div className="header-title">
+            <Link to="/">
               <h1>Oceanographic Data</h1>
+            </Link>
             </div>
-          </Link>
           <Searchfilter
             updateSearchQuery={this.updateSearchQuery}
           />
-          <div className="search-dropdown-mobile-open">filters</div>
+          <button className="search-dropdown-mobile-open">
+            <p>filters</p>
+          </button>
         </header>
         <Filter />
         <main className="article-container">

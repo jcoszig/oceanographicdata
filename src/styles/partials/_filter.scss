@@ -1,10 +1,18 @@
 aside.search-dropdown {
     // Mobile hamburger menu
-    position: relative;
     background: $off-white;
-    padding: 2rem;
+    padding: 1rem;
+    margin:2rem;
+    left: 100vw;
+    transition: left 400ms linear;
     @include tablet {
         padding: 1rem;
+    }
+    @include desktop {
+        padding: 2rem;
+    }
+    &.active {
+        left: 0; 
     }
     .search-dropdown-mobile-close {
         position: absolute;
