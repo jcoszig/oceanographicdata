@@ -1,0 +1,15 @@
+aside.search-dropdown {
+    // Mobile hamburger menu
+    position: relative;
+    background: $off-white;
+    padding: 2rem;
+    @include tablet {
+        padding: 1rem;
+    }
+    .search-dropdown-mobile-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include tablet { display: none; }
+    }
+}

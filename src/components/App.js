@@ -104,6 +104,7 @@ class App extends Component {
           <Searchfilter
             updateSearchQuery={this.updateSearchQuery}
           />
+          <div className="search-dropdown-mobile-open">filters</div>
         </header>
         <Filter />
         <main className="article-container">

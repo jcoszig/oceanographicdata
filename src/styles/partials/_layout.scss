@@ -1,1 +1,25 @@
-//todo CSS grid page layout and some standardised padding and margin for elements
+#main {
+    display: flex;
+    // flex-direction: row;
+    flex-wrap: wrap;
+	max-width: $site-max-width;
+    margin: 0 auto;
+    @include tablet {
+        flex-wrap: wrap;
+    }
+    
+    aside.search-dropdown {
+    // Mobile hamburger menu
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        @include tablet {
+            flex: 3;
+        }
+    }
+    main.article-container {
+        @include tablet {
+            flex: 7;
+        }
+    }
+}
