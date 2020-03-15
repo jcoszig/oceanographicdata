@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Searchfilter from "./Searchfilter";
 import Preview from "./Preview";
-import { Link } from "react-router-dom";
+import Filter from "./Filter";
  
 class App extends Component {
 
@@ -104,6 +105,7 @@ class App extends Component {
             updateSearchQuery={this.updateSearchQuery}
           />
         </header>
+        <Filter />
         <main className="article-container">
           <div className="number-results">
             {this.numberResults()}
