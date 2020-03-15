@@ -1,0 +1,43 @@
+.searchbar-wrapper {
+    display: flex;
+    height: 6rem;
+    padding: 0 1rem;
+    background: $grey;
+    color: $white;
+    #searchbar-input {
+        flex: 6;
+        width: 100%;
+        height: 4rem;
+        margin: 1rem 0;
+        border: 0;
+        border-radius: 3px;
+        background: $white;
+        font-size: 3rem;
+    }
+    .searchbar-title { 
+        flex: 2;
+        @include tablet {
+            flex: 1;
+            font-size: 2rem;
+        }
+        h1 { 
+            padding: 2rem 0;
+            font-size: 1.5rem;
+            @include tablet {
+                padding: 1.5rem 0;
+                font-size: 2rem;
+            }
+        }
+    }
+    .fa-search { 
+        flex: 0;
+        position: relative;
+        right: 35px;
+        font-size: 2.5rem;
+        color: $grey;
+        @include centrechildren;
+    }
+    .searchbar-title, .fa-search {
+        height: 6rem;
+    }
+}

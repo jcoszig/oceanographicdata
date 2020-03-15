@@ -19,6 +19,13 @@ $side-padding: 2rem;
 // Paths
 $fonts: '../../assets/fonts/';
 
+/* Mixins */
+@mixin centrechildren {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 // Standard media queries (mobile first)
 $tablet-width: 768px;
 $desktop-width: 1024px;

@@ -18,13 +18,15 @@ class SearchFilter extends Component {
   render() {
     return (
       <section className="searchbar-wrapper">  
-        <label htmlFor="searchbar" className="searchbar-title">Filter by:</label>
+        <label htmlFor="searchbar" className="searchbar-title">
+          <h1>Filter by:</h1>
+        </label>
         <input type="search"
-          className=""  
-          id="" 
+          id="searchbar-input" 
           name="searchbar" 
           onChange={e => {this.handleChange(e.target.value)}}
           autoComplete="off"/>
+          <i class="fas fa-search"></i>
       </section>
     );
   }  
