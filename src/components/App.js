@@ -84,10 +84,6 @@ class App extends Component {
     this.setState({ filterList });
   }
 
-  highlightMatches(searchQuery){
-    // todo
-  }
-
   render() {
     
     return (
@@ -122,7 +118,8 @@ class App extends Component {
                     title={item.title}
                     description={item.description}
                     temporal={item.temporal}
-                    accessLevel={item.accesslevel}
+                    accesslevel={item.accesslevel}
+                    searchquery={this.state.searchQuery}
                   />
                 ))}
               </ul>

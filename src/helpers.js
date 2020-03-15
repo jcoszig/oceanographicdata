@@ -10,7 +10,7 @@ export function formatDate(date){
 }
 
 export function setAccessLevelIcon(accessLevel){
-    return accessLevel === 'public' ? 'fa-lock-open' : 'fas fa-lock';
+    return accessLevel === 'public' ? 'fa-lock-open' : 'fa-lock';
 }
 
 /* 

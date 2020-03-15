@@ -55,7 +55,7 @@ class Article extends Component {
         <div className="access-level-icon">
           <i className={'fas ' + setAccessLevelIcon(accesslevel)}></i>
         </div>
-        <div key={this.articleId + '-title'}>{title}</div>
+        <h4 key={this.articleId + '-title'}>{title}</h4>
         <p key={this.articleId + '-accesslevel'}>{accesslevel}</p>
 
         <p key={this.articleId + '-description'}>{description}</p>
