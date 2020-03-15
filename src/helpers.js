@@ -9,6 +9,10 @@ export function formatDate(date){
     return;
 }
 
+export function setAccessLevelIcon(accessLevel){
+    return accessLevel === 'public' ? 'fa-lock-open' : 'fas fa-lock';
+}
+
 /* 
     Convert temporal into more readable format. Strips H,M,S 
     Expects: string - temporal in format: 'YYYY-MM-DDTHH:MM:SS/YYYY-MM-DDTHH:MM:SS'
