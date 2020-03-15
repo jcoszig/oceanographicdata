@@ -23,7 +23,7 @@ export function formatDateRangeUK(date){
     const dateFrom = format(fromTo[0]);
     const dateTo = format(fromTo[1]);
 
-    function format(item){
+    function format(item){ 
         const separateTime = item.split('T')
         const YMD = separateTime[0].split('-')
         return `${YMD[2]}-${YMD[1]}-${YMD[0]}`;

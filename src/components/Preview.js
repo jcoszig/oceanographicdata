@@ -3,16 +3,22 @@ import { formatDateRangeUK, setAccessLevelIcon } from "../helpers";
 import { Link } from "react-router-dom";
 
 class Preview extends Component {
+
+  highlightMatches = (str) => {
+    const regex = new RegExp(this.props.searchquery, 'gi');
+    return str.replace(regex, `<span className="highlight">${this.props.searchquery}</span>`)
+  }
   
   render() {    
+    console.log(this.highlightMatches(this.props.title));
 
     return (
       <li>
         <div className="access-level-icon">
           <i className={'fas ' + setAccessLevelIcon(this.props.accesslevel)}></i>
         </div>
-        <h4 className="preview-title">{this.props.title}</h4>
-        <div className="preview-description">{this.props.description}</div>
+        <h4 className="preview-title">{this.highlightMatches(this.props.title)}</h4>
+        <div className="preview-description">{this.highlightMatches(this.props.description)}</div>
         <div className="preview-date-published">Date: {formatDateRangeUK(this.props.temporal)}</div>
         <Link to={`/article/${this.props.index}`}>
           <div  className="preview-view-full">View full details</div>

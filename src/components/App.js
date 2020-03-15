@@ -68,13 +68,11 @@ class App extends Component {
       const regex = new RegExp(wordToMatch, 'gi');
       return item.title.match(regex) || item.description.match(regex)
     });
-    this.setState({ filteredData }, () =>{
-      console.log(filteredData);
-    });
+    this.setState({ filteredData });
   }
 
   // Filter matches based on filter checkbox
-  updateFilterList = (filter) => {
+  updateFilterList = filter => {
     let filterList = { ...this.state.filterList };
 
     filterList = this.state.parsedData.filter( item => {
