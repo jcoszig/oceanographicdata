@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { getFromDate } from "../helpers";
 import Searchfilter from "./Searchfilter";
 import Preview from "./Preview";
 import Filter from "./Filter";
@@ -59,7 +60,6 @@ class App extends Component {
     this.setState({ searchQuery });
 
     this.updateFilteredData(searchQuery.toLowerCase() );
-    // console.log(ui);
   };
 
   // Filter matches within title or description
@@ -73,6 +73,16 @@ class App extends Component {
     this.setState({ filteredData });
   }
 
+  toggleSortByDate = () => {
+    let filteredData = { ...this.state.filteredData };
+    filteredData = this.state.filteredData.sort((a, b) => getFromDate(a.temporal) - getFromDate(b.temporal))
+    this.setState({ filteredData });
+  }
+
+  toggleSortAlphabetically = data => {
+    // todo
+  }
+
   // Filter matches based on filter checkbox
   updateFilterList = filter => {
     let filterList = { ...this.state.filterList };
@@ -84,6 +94,7 @@ class App extends Component {
     this.setState({ filterList });
   }
 
+  // Displays total number of results for search query
   numberResults = () => {
     if(this.state.filteredData.length > 0){
       return (
@@ -92,6 +103,7 @@ class App extends Component {
     }
   }
 
+  // Toggle 'sort by' dropdown
   toggleSortOptions = () => {
     this.setState(state => ({
       sortDropdown: !state.sortDropdown
@@ -131,7 +143,7 @@ class App extends Component {
                   'sort-dropdown-arrow fas fa-chevron-down'}></i>
               </div>
               <ul className={this.state.sortDropdown ? 'sort-dropdown active' : 'sort-dropdown'}>
-                <li><p>Date</p></li>
+                <li onClick={this.toggleSortByDate}><p>Date</p></li>
                 <li><p>Alphabetically</p></li>
               </ul>
               <ul className="preview-results">
