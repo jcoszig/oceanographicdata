@@ -29,7 +29,8 @@ class App extends Component {
     searchQuery : '',
     filterList : [],
     filteredData : [],
-    sortDropdown : false
+    sortDropdown : false,
+    sortOption : 'by Date'
   }
 
   // Fetch JSON data and set in state.
@@ -76,11 +77,13 @@ class App extends Component {
   toggleSortByDate = () => {
     let filteredData = { ...this.state.filteredData };
     filteredData = this.state.filteredData.sort((a, b) => getFromDate(a.temporal) - getFromDate(b.temporal))
-    this.setState({ filteredData });
+    this.setState({ filteredData: filteredData, sortOption: 'by Date' });
   }
 
-  toggleSortAlphabetically = data => {
-    // todo
+  toggleSortAlphabetically = () => {
+    let filteredData = { ...this.state.filteredData };
+    filteredData = this.state.filteredData.sort((a, b) => a.title.localeCompare(b.title))    
+    this.setState({ filteredData: filteredData, sortOption: 'Alphabetically' });
   }
 
   // Filter matches based on filter checkbox
@@ -134,18 +137,20 @@ class App extends Component {
           </div>
           <div className="preview-header">
             <div className="sort-selection">
-              <div className="sort-selected"
-              onClick={(e) => this.toggleSortOptions()}>
-                <p>Sort by: </p>
-                <span>Date</span>
-                <i className={this.state.sortDropdown ? 
-                  'sort-dropdown-arrow fas fa-chevron-up' :
-                  'sort-dropdown-arrow fas fa-chevron-down'}></i>
+              <div className="sort-selected-container">
+                <div className="sort-selected"
+                onClick={(e) => this.toggleSortOptions()}>
+                  <p>Sort: </p>
+                  <span>{this.state.sortOption}</span>
+                  <i className={this.state.sortDropdown ? 
+                    'sort-dropdown-arrow fas fa-chevron-up' :
+                    'sort-dropdown-arrow fas fa-chevron-down'}></i>
+                </div>
+                <ul className={this.state.sortDropdown ? 'sort-dropdown active' : 'sort-dropdown'}>
+                  <li onClick={this.toggleSortByDate}><p>Date</p></li>
+                  <li onClick={this.toggleSortAlphabetically}><p>Alphabetically</p></li>
+                </ul>
               </div>
-              <ul className={this.state.sortDropdown ? 'sort-dropdown active' : 'sort-dropdown'}>
-                <li onClick={this.toggleSortByDate}><p>Date</p></li>
-                <li><p>Alphabetically</p></li>
-              </ul>
               <ul className="preview-results">
                 {/* Render filtered objects */}
                 {this.state.filteredData && this.state.filteredData.map(item => (

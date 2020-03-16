@@ -18,37 +18,41 @@ main.article-container {
     .preview-header {
         width: 90%;
         .sort-selection {
-            .sort-selected {
-                display: inline-block;
-                height: 6rem;
-                padding: 1.7rem;
-                margin-bottom: 2rem;
-                border: solid 1px black;
-                cursor: pointer;
-                p, span {
+            .sort-selected-container {
+                width: 21rem;
+                .sort-selected {
                     display: inline-block;
-                }
-                p { padding-right: 1rem; }
-                .sort-dropdown-arrow {
-                    position: relative;
-                    top: 2px;
-                    padding-left: 1rem;
-                }
-            }
-            .sort-dropdown {
-                display: none;
-                width: 16rem;
-                position: absolute;
-                margin-top: -2rem;
-                background: $off-white;
-                border: solid 1px black;
-                li {
+                    height: 6rem;
+                    width: 100%;
                     padding: 1.7rem;
+                    margin-bottom: 2rem;
+                    border: solid 1px black;
                     cursor: pointer;
-                    &:hover { background: $lightgrey; }
-                    p { padding: 0; }
+                    p, span {
+                        display: inline-block;
+                    }
+                    p { padding-right: 1rem; }
+                    .sort-dropdown-arrow {
+                        position: relative;
+                        top: 2px;
+                        padding-left: 1rem;
+                    }
                 }
-                &.active { display: block; }
+                .sort-dropdown {
+                    display: none;
+                    width: 21rem;
+                    position: absolute;
+                    margin-top: -2rem;
+                    background: $off-white;
+                    border: solid 1px black;
+                    li {
+                        padding: 1.7rem;
+                        cursor: pointer;
+                        &:hover { background: $lightgrey; }
+                        p { padding: 0; }
+                    }
+                    &.active { display: block; }
+                }
             }
         }
         ul.preview-results {
