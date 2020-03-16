@@ -26,7 +26,7 @@ class SearchFilter extends Component {
           name="searchbar" 
           onChange={e => {this.handleChange(e.target.value)}}
           autoComplete="off"/>
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
       </section>
     );
   }  

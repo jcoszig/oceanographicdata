@@ -15,7 +15,7 @@ class Filter extends Component {
         </div>
         <button>Confirm Filters</button>
         <div className="search-dropdown-mobile-close">
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </div>
       </aside>
     );

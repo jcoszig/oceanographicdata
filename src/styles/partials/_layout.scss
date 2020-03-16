@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-	max-width: $site-max-width;
     margin: 0 auto;
     overflow-x: hidden;
     position: relative;
     height:100vh;
+    max-width: $site-absolute-max-width;
     
     @include tablet {
         flex-wrap: wrap;

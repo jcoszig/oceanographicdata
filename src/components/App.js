@@ -27,7 +27,8 @@ class App extends Component {
   },
     searchQuery : '',
     filterList : [],
-    filteredData : []
+    filteredData : [],
+    sortDropdown : false
   }
 
   // Fetch JSON data and set in state.
@@ -91,6 +92,12 @@ class App extends Component {
     }
   }
 
+  toggleSortOptions = () => {
+    this.setState(state => ({
+      sortDropdown: !state.sortDropdown
+    }));
+  }
+
   render() {
 
     return (
@@ -115,14 +122,18 @@ class App extends Component {
           </div>
           <div className="preview-header">
             <div className="sort-selection">
-              <p>Sort: </p><span>Date</span>
-              <div className="sort-dropdown">
-                <ul>
-                  <li><p>Date</p></li>
-                  <li><p>Alphabetically</p></li>
-                  <li><p>Relevance (optional)</p></li>
-                </ul>
+              <div className="sort-selected"
+              onClick={(e) => this.toggleSortOptions()}>
+                <p>Sort by: </p>
+                <span>Date</span>
+                <i className={this.state.sortDropdown ? 
+                  'sort-dropdown-arrow fas fa-chevron-up' :
+                  'sort-dropdown-arrow fas fa-chevron-down'}></i>
               </div>
+              <ul className={this.state.sortDropdown ? 'sort-dropdown active' : 'sort-dropdown'}>
+                <li><p>Date</p></li>
+                <li><p>Alphabetically</p></li>
+              </ul>
               <ul className="preview-results">
                 {/* Render filtered objects */}
                 {this.state.filteredData && this.state.filteredData.map(item => (
