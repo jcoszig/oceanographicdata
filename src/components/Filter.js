@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Filter extends Component {
   render() {
     return (
-      <aside className="search-dropdown">  
+      <aside className={this.props.mobilemenu ? 'search-dropdown': 'search-dropdown active'}>  
         <h1>Search Filters</h1>
         <div className="filter-options">
           <h4>todo: filter type title</h4>
@@ -14,8 +14,10 @@ class Filter extends Component {
           </ul>
         </div>
         <button>Confirm Filters</button>
-        <div className="search-dropdown-mobile-close">
+        <div  className={this.props.mobilemenu ? 'search-dropdown-mobile-close': 'search-dropdown-mobile-close active'}
+              onClick={this.props.toggleMobileMenu}>
           <i className="fas fa-times"></i>
+          {/* todo: trigger setting of state.mobileMenu via this button */}
         </div>
       </aside>
     );

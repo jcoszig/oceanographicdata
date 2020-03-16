@@ -9,10 +9,9 @@ class SearchFilter extends Component {
     updateSearchQuery: PropTypes.func
   }
 
-  // Begin filtering once string is > 3 char 
+  // Begin filtering once string is > 2 char 
   handleChange = debounce(searchTerm => {
-    // return searchTerm.length > 3 ? this.props.updateSearchQuery(searchTerm) : false;
-    return searchTerm.length > 3 ? this.props.updateSearchQuery(searchTerm) : false;
+    return searchTerm.length > 2 ? this.props.updateSearchQuery(searchTerm) : false;
   }, 500)
 
   render() {

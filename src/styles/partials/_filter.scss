@@ -1,12 +1,15 @@
 aside.search-dropdown {
     // Mobile hamburger menu
-    background: $off-white;
-    padding: 1rem;
-    margin:2rem;
     left: 100vw;
-    transition: left 400ms linear;
+    padding: 1rem;
+    margin:0;
+    z-index: 1;
+    background: $off-white;
+    transition: left 200ms linear;
     @include tablet {
         padding: 1rem;
+        margin:2rem;
+        z-index: unset;
     }
     @include desktop {
         padding: 2rem;
@@ -15,9 +18,16 @@ aside.search-dropdown {
         left: 0; 
     }
     .search-dropdown-mobile-close {
+        display: flex;
         position: absolute;
         top: 0;
         right: 0;
+        height: 4rem;
+        width: 4rem;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .fas { font-size: 3rem; } 
         @include tablet { display: none; }
     }
 }

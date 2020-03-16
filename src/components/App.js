@@ -30,7 +30,8 @@ class App extends Component {
     filterList : [],
     filteredData : [],
     sortDropdown : false,
-    sortOption : 'by Date'
+    sortOption : 'by Date',
+    mobileMenu : false
   }
 
   // Fetch JSON data and set in state.
@@ -113,6 +114,12 @@ class App extends Component {
     }));
   }
 
+  toggleMobileMenu = () => {
+    this.setState(state => ({
+      mobileMenu: !state.mobileMenu
+    }));
+  }
+
   render() {
 
     return (
@@ -126,11 +133,15 @@ class App extends Component {
           <Searchfilter
             updateSearchQuery={this.updateSearchQuery}
           />
-          <button className="search-dropdown-mobile-open">
+          <button className="search-dropdown-mobile-open"
+                  onClick={this.toggleMobileMenu}>
             <p>filters</p>
           </button>
         </header>
-        <Filter />
+        <Filter 
+          mobilemenu={this.state.mobileMenu}
+          toggleMobileMenu={this.toggleMobileMenu}
+        />
         <main className="article-container">
           <div className="number-results">
             {this.numberResults()}
