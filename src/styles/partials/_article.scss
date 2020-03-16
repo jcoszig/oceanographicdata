@@ -1,0 +1,8 @@
+main.article-container {
+    p, h4, span { padding-bottom: 2rem; }
+    .access-level-icon, .article-date-published {
+        display: inline-block;
+        width: 50%;
+    }
+    .article-date-published { text-align: right; }
+}

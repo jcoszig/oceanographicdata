@@ -54,20 +54,30 @@ class Article extends Component {
       <>
         <div className="access-level-icon">
           <i className={'fas ' + setAccessLevelIcon(accesslevel)}></i>
+          <span> | {accesslevel}</span>
         </div>
-        <h4 key={this.articleId + '-title'}>{title}</h4>
-        <p key={this.articleId + '-accesslevel'}>{accesslevel}</p>
-
-        <p key={this.articleId + '-description'}>{description}</p>
-        <p key={this.articleId + '-type'}>{type}</p>
-        <p key={this.articleId + '-temporal'}>Date: {formatDateRangeUK(temporal)}</p>
-        <p key={this.articleId + '-publisher_name'}>{publisher_name}</p>
-        <p key={this.articleId + '-publisher_type'}>{publisher_type}</p>
-        <p key={this.articleId + '-modified'}>Modified: {modified}</p>
-        <p key={this.articleId + '-contactpoint_hasemail'}>{contactpoint_hasemail}</p>
-        <p key={this.articleId + '-contactpoint_fn'}>{contactpoint_fn}</p>
-        <p key={this.articleId + '-contactpoint_type'}>{contactpoint_type}</p>
-        <p key={this.articleId + '-accrualperiodicity'}>{accrualperiodicity}</p>
+        <span key={this.articleId + '-temporal'} 
+              className="article-date-published">Date: {formatDateRangeUK(temporal)}</span>
+        <h4 key={this.articleId + '-title'}
+            classname="article-title">{title}</h4>
+        <p  key={this.articleId + '-description'}
+            className="article-description">{description}</p>
+        <p  key={this.articleId + '-type'}
+            className="article-type">{type}</p>
+        <p key={this.articleId + '-publisher_name'}
+            className="article-publisher_name">{publisher_name}</p>
+        <p key={this.articleId + '-publisher_type'}
+            className="article-publisher_type">{publisher_type}</p>
+        <p key={this.articleId + '-modified'}
+            className="article-modified">Modified: {modified}</p>
+        <p key={this.articleId + '-contactpoint_hasemail'}
+            className="article-contactpoint_hasemail">{contactpoint_hasemail}</p>
+        <p key={this.articleId + '-contactpoint_fn'}
+            className="article-contactpoint_fn">{contactpoint_fn}</p>
+        <p key={this.articleId + '-contactpoint_type'}
+            className="article-contactpoint_type">{contactpoint_type}</p>
+        <p key={this.articleId + '-accrualperiodicity'}
+            className="article-accrualperiodicity">{accrualperiodicity}</p>
         {/* <p>{spatial}</p>  */}
       </>
     )

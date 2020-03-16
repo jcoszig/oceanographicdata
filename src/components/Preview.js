@@ -29,6 +29,7 @@ class Preview extends Component {
       <li>
         <div className="access-level-icon">
           <i className={'fas ' + setAccessLevelIcon(this.props.accesslevel)}></i>
+          <span> | {this.props.accesslevel}</span>
         </div>
         <h4 className="preview-title">{this.highlightMatches(this.props.title, this.props.searchquery)}</h4>
         <div className="preview-description">{this.highlightMatches(this.props.description, this.props.searchquery)}</div>
